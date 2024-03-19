@@ -1,2 +1,3 @@
 * 
 1 . Import components o? APP 
+tao 1 props ở components  con khi muồn dùng thì binding ở compoentn cha

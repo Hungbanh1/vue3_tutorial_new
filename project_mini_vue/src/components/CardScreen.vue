@@ -5,11 +5,17 @@
       v-bind:class="{ 'is-flipped': isFlipped }"
       @click="onToggleFlipCard"
     >
-      <div class="card__face card__face--front">
-        <div class="cart__content">front</div>
+      <div class="card__face card_front card__face--front">
+        <div class="cart__content"></div>
       </div>
-      <div class="card__face card__face--back">
-        <div class="cart__content">Back</div>
+      <div class="card__face card_back card__face--back">
+        <div
+          class="card__content"
+          v-bind:style="{
+            backgroundImage: `url(${require('@/assets/images/' +
+              imgBackFaceUrl)})`,
+          }"
+        ></div>
       </div>
     </div>
   </div>
@@ -18,8 +24,16 @@
 <script>
 export default {
   props: {
-    title: String,
-    content: String,
+    imgBackFaceUrl: {
+      type: String,
+      required: true,
+    },
+    card: {
+      type: [String, Number, Array, Object],
+    },
+    index: {
+      type: [String, Number, Array, Object],
+    },
   },
   data() {
     return {
@@ -29,6 +43,12 @@ export default {
   methods: {
     onToggleFlipCard() {
       this.isFlipped = !this.isFlipped;
+      if (this.isFlipped) {
+        this.$emit("onFlip", this.card);
+      }
+    },
+    onFlipBackCard() {
+      this.isFlipped = false;
     },
   },
 };
@@ -71,18 +91,22 @@ export default {
   box-shadow: 0 3px 18px 3px rgba(0, 0, 0, 0.2);
 }
 
-.card__face--front .card__content {
+.card__face--front .card__content,
+.card_front {
   background: url("../assets/images/icon_back.png") no-repeat center center;
+  background-size: 40px 40px;
   height: 100%;
   width: 100%;
 }
 
-.card__face--back {
+.card__face--back,
+.card_back {
   background-color: var(--light);
   transform: rotateY(-180deg);
 }
 
-.card__face--back .card__content {
+.card__face--back .card__content,
+.card_back {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
