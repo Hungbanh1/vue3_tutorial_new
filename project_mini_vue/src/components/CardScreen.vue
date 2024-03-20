@@ -1,12 +1,37 @@
 <template>
-  <div class="card">
+  <div
+    class="card"
+    v-bind:class="{ disabled: isDisabled }"
+    :style="{
+      height: `${(920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16}px`,
+      width: `${
+        (((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) / 4
+      }px`,
+      perspective: `${
+        ((((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) / 4) * 2
+      }px`,
+    }"
+  >
     <div
       class="card__inner"
       v-bind:class="{ 'is-flipped': isFlipped }"
       @click="onToggleFlipCard"
     >
       <div class="card__face card_front card__face--front">
-        <div class="cart__content"></div>
+        <div
+          class="cart__content"
+          :style="{
+            'background-size': `${
+              (((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) /
+              4 /
+              3
+            }px ${
+              (((920 - 16 * 4) / Math.sqrt(cardsContext.length) - 16) * 3) /
+              4 /
+              3
+            }px`,
+          }"
+        ></div>
       </div>
       <div class="card__face card_back card__face--back">
         <div
@@ -28,6 +53,12 @@ export default {
       type: String,
       required: true,
     },
+    cardsContext: {
+      type: Array,
+      default: function () {
+        return [];
+      },
+    },
     card: {
       type: [String, Number, Array, Object],
     },
@@ -38,10 +69,12 @@ export default {
   data() {
     return {
       isFlipped: false,
+      isDisabled: false,
     };
   },
   methods: {
     onToggleFlipCard() {
+      if (this.isDisabled) return false;
       this.isFlipped = !this.isFlipped;
       if (this.isFlipped) {
         this.$emit("onFlip", this.card);
@@ -49,6 +82,9 @@ export default {
     },
     onFlipBackCard() {
       this.isFlipped = false;
+    },
+    onEnableDisableMode() {
+      this.isDisabled = true;
     },
   },
 };
@@ -59,8 +95,6 @@ export default {
   display: inline-block;
   margin-right: 1rem;
   margin-bottom: 1rem;
-  width: 90px;
-  height: 120px;
 }
 
 .card__inner {
@@ -72,6 +106,9 @@ export default {
   position: relative;
 }
 
+.card.disabled .card__inner {
+  cursor: default;
+}
 .card.disabled .card__inner {
   cursor: default;
 }

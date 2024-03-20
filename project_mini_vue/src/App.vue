@@ -8,13 +8,22 @@
   <InteractScreen
     v-if="statusMatch == 'match'"
     :cardsContext="settings.cardsContext"
+    @onFinish="onGetResult"
   ></InteractScreen>
+  <ResultScreen
+    :timer="timer"
+    v-if="statusMatch == 'result'"
+    @onStartAgain="statusMatch == 'default'"
+  ></ResultScreen>
+  <CopyRightScreen></CopyRightScreen>
 </template>
 
 <script>
 import MainScreen from "./components/MainScreen.vue";
 import InteractScreen from "./components/InteractScreen.vue";
 import { shuffled } from "./ultis/array.js";
+import ResultScreen from "./components/ResultScreen.vue";
+import CopyRightScreen from "./components/CopyRightScreen.vue";
 export default {
   data() {
     return {
@@ -24,12 +33,15 @@ export default {
         cardsContext: [],
         startedAt: null,
       },
+      timer: 0,
     };
   },
   name: "App",
   components: {
     MainScreen,
     InteractScreen,
+    ResultScreen,
+    CopyRightScreen,
   },
   methods: {
     onHandleBeforeStart(config) {
@@ -58,6 +70,12 @@ export default {
       this.settings.total = config.total;
       //data ready
       this.statusMatch = "match";
+    },
+    onGetResult() {
+      //get timer
+      this.timer = new Date().getTime() - this.settings.startedAt;
+      //switch to result component
+      this.statusMatch = "result";
     },
   },
 };
