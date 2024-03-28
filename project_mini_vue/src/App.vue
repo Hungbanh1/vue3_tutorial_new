@@ -10,11 +10,12 @@
     :cardsContext="settings.cardsContext"
     @onFinish="onGetResult"
   ></InteractScreen>
+  <!-- //lang nghe su kien onStartAgain -->
   <ResultScreen
+    v-if="statusMatch === 'result'"
     :timer="timer"
-    v-if="statusMatch == 'result'"
-    @onStartAgain="statusMatch == 'default'"
-  ></ResultScreen>
+    @onStartAgain="statusMatch = 'default'"
+  />
   <CopyRightScreen></CopyRightScreen>
 </template>
 
@@ -23,26 +24,34 @@ import MainScreen from "./components/MainScreen.vue";
 import InteractScreen from "./components/InteractScreen.vue";
 import { shuffled } from "./ultis/array.js";
 import ResultScreen from "./components/ResultScreen.vue";
-import CopyRightScreen from "./components/CopyRightScreen.vue";
+// import CopyRightScreen from "./components/CopyRightScreen.vue";
 export default {
-  data() {
-    return {
-      statusMatch: "default",
-      settings: {
-        total: 0,
-        cardsContext: [],
-        startedAt: null,
-      },
-      timer: 0,
-    };
+  emits: ["onStartAgain"],
+  props: {
+    onStartAgainTo: {
+      type: String,
+      required: true,
+    },
   },
   name: "App",
   components: {
     MainScreen,
     InteractScreen,
     ResultScreen,
-    CopyRightScreen,
+    // CopyRightScreen,
   },
+  data() {
+    return {
+      settings: {
+        total: 0,
+        cardsContext: [],
+        startedAt: null,
+      },
+      timer: 0,
+      statusMatch: "default",
+    };
+  },
+
   methods: {
     onHandleBeforeStart(config) {
       //logic nhu v ne component con tao phuong thuc onStart va dung phuong thuc emit de truyen du lieu total

@@ -3,6 +3,7 @@
     <h1>✨ Congratulations ✨</h1>
     <h3>{{ Math.round(timer / 920) }} seconds</h3>
     <button @click="onStartAgain">Start Again</button>
+    <!-- <p @click="onStartAgain">Start Again</p> -->
   </div>
 </template>
 
@@ -11,12 +12,14 @@ export default {
   props: {
     timer: {
       type: Number,
-      default: 0,
+      required: true,
     },
   },
   emits: ["onStartAgain"],
   methods: {
+    //gui su kien len qua th app
     onStartAgain() {
+      console.log("zo lkh");
       this.$emit("onStartAgain");
     },
   },
