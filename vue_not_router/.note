@@ -1,0 +1,9 @@
+router 2 cach chen link : thu nhat :
+<!-- <router-link to="/transaction">Transactions</router-link> -->
+thu 2 : dinh danh
+<!-- <router-link
+:to="{ name: 'transaction-detail', params: { id: item.id } }"
+>{{ item.name }}</router-link
+> -->
+co the dung path redirect { // path: "/transaction/:id", path: "/ts", redirect:
+"/transaction", },
