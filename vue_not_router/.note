@@ -7,3 +7,7 @@ thu 2 : dinh danh
 > -->
 co the dung path redirect { // path: "/transaction/:id", path: "/ts", redirect:
 "/transaction", },
+<!-- // fetching data  -->
+.lay du lieu tu server 1. goi bang cai gi : fetch , axios , xttp 2 goi nhu the
+nao , chay nhu the nao : ben be cung cap api xu ly va gan vao 3 . tao server ao
+json server

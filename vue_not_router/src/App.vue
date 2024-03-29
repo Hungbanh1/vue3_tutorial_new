@@ -1,4 +1,5 @@
 <template>
+  <h1>Hello Dom</h1>
   <router-view></router-view>
   <Navbar></Navbar>
 </template>
@@ -8,6 +9,12 @@ import Navbar from "./components/Nav.vue";
 export default {
   name: "App",
   components: { Navbar },
+  created() {
+    console.log(document.querySelector("h1"));
+  },
+  mounted() {
+    console.log(document.querySelector("h1"));
+  },
 };
 </script>
 
