@@ -11,3 +11,8 @@ co the dung path redirect { // path: "/transaction/:id", path: "/ts", redirect:
 .lay du lieu tu server 1. goi bang cai gi : fetch , axios , xttp 2 goi nhu the
 nao , chay nhu the nao : ben be cung cap api xu ly va gan vao 3 . tao server ao
 json server
+//compositon api
+//ref se bao boc 1 lop object o ngoai , phai truy cap qua thuoc tinh value ms co the lay du lieu
+//reaction se bao boc 1 proxy object , co the truy cap gia tri 1 cach bth price, name , .,...
+//watch theo doi 1 cai bien
+//watcheffect giong computed tao ra su thay doi khi noi tai thay doi  chay lai lien tuc , kh tra du lieu

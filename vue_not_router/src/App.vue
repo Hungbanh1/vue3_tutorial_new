@@ -6,6 +6,7 @@
 
 <script>
 import Navbar from "./components/Nav.vue";
+// import homeView from "./components/pages/home.vue";
 export default {
   name: "App",
   components: { Navbar },
@@ -21,10 +22,10 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 60px; */
 }
 </style>
