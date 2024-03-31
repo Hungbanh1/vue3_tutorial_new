@@ -16,3 +16,8 @@ json server
 //reaction se bao boc 1 proxy object , co the truy cap gia tri 1 cach bth price, name , .,...
 //watch theo doi 1 cai bien
 //watcheffect giong computed tao ra su thay doi khi noi tai thay doi  chay lai lien tuc , kh tra du lieu
+
+
+
+//#10
+setup params : note params , context

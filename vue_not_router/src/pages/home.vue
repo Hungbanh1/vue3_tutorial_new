@@ -19,7 +19,18 @@ import { ref, reactive, computed, watch, watchEffect } from "vue";
 //watch theo doi 1 cai bien
 //watcheffect giong computed tao ra su thay doi khi noi tai thay doi  chay lai lien tuc , kh tra du lieu
 export default {
-  setup() {
+  props: {
+    theme: {
+      type: String,
+      default: "light",
+    },
+  },
+  // eslint-disable-next-line no-unused-vars, vue/no-setup-props-destructure
+  setup({ theme }, { emit }) {
+    // console.log(props.theme);
+    // console.log(context);
+    // console.log(theme);
+    // console.log(emit);
     const firstName = ref("hung");
     const searchText = ref("");
     const customers = reactive(["hung", "Porsche", "ga", "SG"]);
