@@ -17,62 +17,16 @@
 </template>
 
 <script>
-import { ref } from "vue";
+// import useTransaction from ".\uses\fetchTransaction.js";
+import { useTransaction } from "../uses/fetchTransaction";
+
 export default {
-  data() {
-    return {
-      // transactions: [
-      //   {
-      //     id: 1,
-      //     name: "Jane Doe",
-      //     amount: 1000,
-      //     date: "2020-01-01",
-      //   },
-      //   {
-      //     id: 2,
-      //     name: "John Doe",
-      //     amount: 2000,
-      //     date: "2020-01-02",
-      //   },
-      //   {
-      //     id: 3,
-      //     name: "Mary Doe",
-      //     amount: 3000,
-      //     date: "2020-01-03",
-      //   },
-      // ],
-      transactions: [],
-    };
-  },
-  created() {
-    //fetch la thuc hien
-    // fetch("http://localhost:3000/transactions")
-    //   //khi do moi thuc hien th nay
-    //   .then((response) => response.json())
-    //   //khi do moi thuc hien th nay
-    //   .then((data) => (this.transactions = data));
-  },
   setup() {
-    const transactions = ref([]);
-    const error = ref(null);
-    console.log(transactions, error);
-    const fetchAll = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/transactions");
-
-        if (!response.ok)
-          throw new Error("Something went wrong, please try again");
-
-        transactions.value = await response.json();
-      } catch (err) {
-        error.value = err;
-        console.log(error.value);
-      }
-    };
+    const { transactions, fetchAll } = useTransaction();
     fetchAll();
-    // eslint-disable-next-line vue/no-dupe-keys
-    return { transactions, error, fetchAll };
-    // return { transactions };
+    return {
+      transactions,
+    };
   },
 };
 </script>
