@@ -4,6 +4,7 @@ import Transaction from "./pages/transaction.vue";
 import TransactionDetail from "./pages/transaction-detail.vue";
 import NotFound from "./pages/NotFound.vue";
 import Home from "./pages/home.vue";
+import Store from "./pages/store.vue";
 
 const routes = [
   {
@@ -16,7 +17,11 @@ const routes = [
     name: "transaction-route",
     component: Transaction,
   },
-
+  {
+    path: "/store",
+    name: "store-route",
+    component: Store,
+  },
   {
     path: "/transaction/:id",
     name: "transaction-detail",

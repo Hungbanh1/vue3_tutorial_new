@@ -1,5 +1,4 @@
 <template>
-  <h1>Hello Dom</h1>
   <router-view></router-view>
   <Navbar></Navbar>
 </template>

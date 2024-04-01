@@ -7,21 +7,18 @@
   </div>
 </template>
 <script>
+import { computed } from "vue";
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
 export default {
   name: "App",
-
-  data() {
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+    store.dispatch("fetchTransaction", { id: route.params.id });
     return {
-      transaction: null,
+      transaction: computed(() => store.state.transaction),
     };
-  },
-  created() {
-    fetch("http://localhost:3000/transactions/" + this.$route.params.id)
-      //khi do moi thuc hien th nay
-      .then((response) => response.json())
-      //khi do moi thuc hien th nay
-      .then((data) => (this.transaction = data))
-      .then(() => console.log(this.transaction));
   },
 };
 </script>
