@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import "./assets/style/taliwind.css";
 import "./assets/style/global.css";
-import { registerGlobalComponents } from "./assets/utils/import";
+import { registerGlobalComponents } from "./utils/import";
 const app = createApp(App);
 registerGlobalComponents(app);
 app.use(router);
