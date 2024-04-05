@@ -1,33 +1,48 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { projectAuth } from "@/config/firebase";
 
+const requireAuth = (to, from, next) => {
+  const user = projectAuth.currentUser;
+  // console.log("Before", user);
+  if (!user) next({ name: "Login", params: {} });
+  else next();
+};
 const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("@/views/index.vue"),
     meta: { layout: "default" },
-    // meta: "default",
+    component: () => import(/*webpackChunkName:"Index" */ "@/views/index.vue"),
   },
   {
     path: "/register",
     name: "Register",
     meta: { layout: "auth" },
-    component: () => import("@/views/register.vue"),
+    component: () =>
+      import(/*webpackChunkName:"Register" */ "@/views/register.vue"),
   },
   {
     path: "/login",
     name: "Login",
-    component: () => import("@/views/login.vue"),
-
     meta: { layout: "auth" },
+    component: () => import(/*webpackChunkName:"Login" */ "@/views/login.vue"),
   },
-  // {
-  //   path: "/default",
-  //   name: "Default",
-  //   component: () => import("@/layouts/default.vue"),
-  // },
 
-  {},
+  {
+    path: "/profile",
+    name: "Profile",
+    meta: { layout: "auth" },
+    component: () =>
+      import(/*webpackChunkName:"Login" */ "@/views/profile.vue"),
+    beforeEnter: requireAuth,
+  },
+  {
+    path: "/logout",
+    name: "Logout",
+    meta: { layout: "auth" },
+    component: () =>
+      import(/*webpackChunkName:"Logout" */ "@/views/logout.vue"),
+  },
 ];
 
 const router = createRouter({

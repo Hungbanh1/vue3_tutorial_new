@@ -83,7 +83,8 @@ export default {
 
     async function onSubmit() {
       await signin(email.value, password.value);
-      if (!error.value) router.push({ name: "Home", params: {} });
+      //dang nhap thanh cong day vao trang profile
+      if (!error.value) router.push({ name: "Profile", params: {} });
     }
     return { onSubmit, password, error, isPending, email };
   },
