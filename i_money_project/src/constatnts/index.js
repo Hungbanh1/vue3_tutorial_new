@@ -42,3 +42,25 @@ export const PROFILE_OPTIONS = [
     },
   },
 ];
+export const NAV_BOTTOM_ITEMS = [
+  {
+    icon: "fa-solid fa-list",
+    text: "Home",
+    name: "Home",
+  },
+  {
+    icon: "fa-brands fa-rocketchat",
+    text: "Report",
+    name: "Report",
+  },
+  {
+    icon: "fa-solid fa-chart-simple",
+    text: "Budget",
+    name: "Budget",
+  },
+  {
+    icon: "fa-regular fa-user",
+    text: "Profile",
+    name: "Profile",
+  },
+];

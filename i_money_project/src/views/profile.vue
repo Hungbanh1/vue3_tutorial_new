@@ -1,5 +1,6 @@
 <template>
-  <h1>Profile page</h1>
+  <navigation-header></navigation-header>
+
   <!-- Start info -->
   <div class="row" v-if="user">
     <div class="container mx-auto p-8">
@@ -55,15 +56,20 @@
       </div>
     </div>
   </div>
+  <navigation-bottom></navigation-bottom>
 </template>
 <script>
 import { reactive } from "vue";
 import { PROFILE_OPTIONS } from "@/constatnts";
 import { useUser } from "@/composables/useUser";
-
+import NavigationBottom from "@/components/NavigationBottom.vue";
+import NavigationHeader from "@/components/NavigationHeader.vue";
 export default {
   name: "ProfileLayout",
-
+  components: {
+    NavigationBottom,
+    NavigationHeader,
+  },
   setup() {
     //react kh bh h thay the du lieu
     const profileOptions = reactive(PROFILE_OPTIONS);
@@ -72,6 +78,8 @@ export default {
     return {
       profileOptions,
       user,
+      NavigationBottom,
+      NavigationHeader,
     };
   },
 };

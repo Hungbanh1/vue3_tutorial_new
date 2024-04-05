@@ -11,7 +11,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    meta: { layout: "default" },
+    meta: { layout: "default", leading: true, text: "halo" },
     component: () => import(/*webpackChunkName:"Index" */ "@/views/index.vue"),
   },
   {
@@ -31,7 +31,7 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    meta: { layout: "auth" },
+    meta: { text: "Profile", leading: false, layout: "auth" },
     component: () =>
       import(/*webpackChunkName:"Login" */ "@/views/profile.vue"),
     beforeEnter: requireAuth,
@@ -42,6 +42,27 @@ const routes = [
     meta: { layout: "auth" },
     component: () =>
       import(/*webpackChunkName:"Logout" */ "@/views/logout.vue"),
+  },
+  {
+    path: "/report",
+    name: "Report",
+    meta: { layout: "auth" },
+    component: () =>
+      import(/*webpackChunkName:"Logout" */ "@/views/report.vue"),
+  },
+  {
+    path: "/budget",
+    name: "Budget",
+    meta: { layout: "auth" },
+    component: () =>
+      import(/*webpackChunkName:"Logout" */ "@/views/budget.vue"),
+  },
+  {
+    path: "/new-transaction",
+    name: "New-transaction",
+    meta: { layout: "auth" },
+    component: () =>
+      import(/*webpackChunkName:"Logout" */ "@/views/new-transaction.vue"),
   },
 ];
 
