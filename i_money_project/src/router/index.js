@@ -11,7 +11,12 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    meta: { layout: "default", leading: true, text: "halo" },
+    meta: {
+      layout: "default",
+      leading: true,
+      text: "halo",
+      isShowFooter: true,
+    },
     component: () => import(/*webpackChunkName:"Index" */ "@/views/index.vue"),
   },
   {
@@ -31,7 +36,12 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    meta: { text: "Profile", leading: false, layout: "auth" },
+    meta: {
+      text: "Profile",
+      leading: false,
+      layout: "auth",
+      isShowFooter: true,
+    },
     component: () =>
       import(/*webpackChunkName:"Login" */ "@/views/profile.vue"),
     beforeEnter: requireAuth,
@@ -46,21 +56,33 @@ const routes = [
   {
     path: "/report",
     name: "Report",
-    meta: { layout: "auth" },
+    meta: {
+      text: "Report",
+      leading: false,
+      isShowFooter: true,
+    },
     component: () =>
       import(/*webpackChunkName:"Logout" */ "@/views/report.vue"),
   },
   {
     path: "/budget",
     name: "Budget",
-    meta: { layout: "auth" },
+    meta: {
+      text: "Budget",
+      leading: false,
+      isShowFooter: true,
+    },
     component: () =>
       import(/*webpackChunkName:"Logout" */ "@/views/budget.vue"),
   },
   {
     path: "/new-transaction",
     name: "New-transaction",
-    meta: { layout: "auth" },
+    meta: {
+      text: "New-transaction",
+      leading: false,
+      isShowFooter: false,
+    },
     component: () =>
       import(/*webpackChunkName:"Logout" */ "@/views/new-transaction.vue"),
   },

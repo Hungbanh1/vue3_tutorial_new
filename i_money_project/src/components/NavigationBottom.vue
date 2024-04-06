@@ -27,6 +27,7 @@
 </template>
 <script>
 import { reactive } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -52,8 +53,13 @@ export default {
         name: "Profile",
       },
     ]);
+    const router = useRouter();
+    function goToRoute() {
+      router.push("/new-transaction");
+    }
     return {
       navItems,
+      goToRoute,
     };
   },
 };
