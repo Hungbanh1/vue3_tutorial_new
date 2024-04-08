@@ -1,22 +1,24 @@
 <template>
-  <navigation-header></navigation-header>
+  <!-- <navigation-header></navigation-header> -->
+  <h1>default</h1>
   <slot />
   <navigation-bottom v-if="!meta.isShowFooter" />
 </template>
 
 <script>
 import NavigationBottom from "@/components/NavigationBottom.vue";
-import NavigationHeader from "@/components/NavigationHeader.vue";
+// import NavigationHeader from "@/components/NavigationHeader.vue";
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 export default {
-  name: "defaultLayout",
+  name: "default-layout",
   components: {
     NavigationBottom,
-    NavigationHeader,
+    // NavigationHeader,
   },
   setup() {
     const route = useRoute();
+    console.log("default");
     return {
       meta: computed(() => route.meta),
     };

@@ -8,9 +8,9 @@
   />
   <component :is="layout">
     <router-view />
-    <div v-for="(layout, index) in meta" :key="index">
+    <!-- <div v-for="(layout, index) in meta" :key="index">
       <div>{{ layout }}</div>
-    </div>
+    </div> -->
   </component>
 </template>
 <script>
@@ -21,10 +21,10 @@ import { PUBLIC_LAYOUT } from "@/constatnts";
 export default {
   setup() {
     const route = useRoute();
-    console.log(route);
-    console.log(route.meta);
+    // console.log(route);
+    // console.log(route.meta);
     return {
-      layout: computed(() => route.meta.layout || PUBLIC_LAYOUT + "-test-"),
+      layout: computed(() => (route.meta.layout || PUBLIC_LAYOUT) + "-layout"),
     };
   },
 };

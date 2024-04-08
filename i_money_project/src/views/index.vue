@@ -1,7 +1,6 @@
 <template>
   <navigation-header></navigation-header>
 
-  <h1>trang logdasdasdin</h1>
   <div class="mt-6" v-if="user">{{ user.displayName }}</div>
   <navigation-bottom></navigation-bottom>
   <slot />

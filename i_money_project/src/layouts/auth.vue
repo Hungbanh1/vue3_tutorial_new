@@ -7,10 +7,13 @@
 <script>
 // import { NavigationBrand } from "@/components/NavigationBrand.vue";
 export default {
-  name: "AuthLayout", // Updated component name to 'AuthLayout'
+  name: "auth-layout", // Updated component name to 'AuthLayout'
   // Your script code here
   // components: {
   //   NavigationBrand,
   // },
+  setup() {
+    console.log("ok");
+  },
 };
 </script>
